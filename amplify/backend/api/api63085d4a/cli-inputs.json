@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/get-crypto-price": {
+      "name": "/get-crypto-price",
+      "lambdaFunction": "getcryptoprice",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
