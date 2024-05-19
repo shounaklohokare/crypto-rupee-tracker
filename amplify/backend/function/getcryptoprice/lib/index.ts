@@ -1,45 +1,90 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import * as ccxt from 'ccxt';
-import { Ticker } from 'ccxt';
+import { Tickers, Ticker } from 'ccxt';
+import * as CurrencyConverter from 'currency-converter-lt'
+
+interface CryptoData extends Ticker {
+    priceInInr : number
+}
 
 export const handler = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
     console.log(`EVENT: ${JSON.stringify(event)}`);
 
-    const exchange = new ccxt.binance();
+    const usdInrRateResponse : number | string = await getUsdInrRate() 
 
-    const symbols: string[] = ['BTC/USDT', 'ETH/USDT', 'DOGE/USDT'];
-    console.log(symbols)
-
-    try {
-        const tickerData: Ticker[] = []
+    if(typeof usdInrRateResponse === "string"){
+        return generateResponse(500, usdInrRateResponse);
+    }
     
-        for(const symbol of symbols){
-            console.log(symbol)
-            tickerData.push(await exchange.fetchTicker(symbol))
-        }
-        
-        
-        return {
-            statusCode: 200,
-             headers: {
-                 "Access-Control-Allow-Origin": "*",
-                 "Access-Control-Allow-Headers": "*"
-             },
-            body: JSON.stringify(tickerData),
-        };
-        
-      } catch (error) {
-         return {
-            statusCode: 200,
-             headers: {
-                 "Access-Control-Allow-Origin": "*",
-                 "Access-Control-Allow-Headers": "*"
-             },
-            body: JSON.stringify(`Error :- ${error}`),
-        };
+    const cryptoDataResponse = await getCryptoData(usdInrRateResponse);
+
+    if(typeof cryptoDataResponse === "string"){
+        return generateResponse(500, cryptoDataResponse);
     }
 
+    return generateResponse(200, cryptoDataResponse);
 
 };
+
+
+const getUsdInrRate = async () : Promise<number | string> => {
+
+  try{
+
+      const currencyConverter = new CurrencyConverter({from: "USD", to: "INR", amount: 1});
+
+      const usdRupeerate : number = await currencyConverter.convert();
+
+      return usdRupeerate;
+
+  }catch(error){
+      return `Erorr:- ${error}` ;
+  }
+
+}
+
+const getCryptoData = async (usdInrRate : number) : Promise<CryptoData[] | string>  => {
+
+  try {
+      const exchange = new ccxt.binance();
+      
+      const TickersArray : Tickers = await exchange.fetchTickers();
+
+      const cryptoData : CryptoData[] = []
+      for(const ticker in TickersArray){
+
+          if(!ticker.endsWith('/USDT')){
+              continue;
+          } 
+
+          const priceInInr : number = (TickersArray[ticker]?.last ?? 0) * usdInrRate;
+
+          const obj : CryptoData = {
+              ...TickersArray[ticker],
+              priceInInr
+          }
+
+          cryptoData.push(obj)
+      }
+
+      return cryptoData;
+
+  }catch(error){
+    return `Erorr:- ${error}` ;
+  }
+}
+
+const generateResponse = (resCode : number, resBody: string | CryptoData[]) => {
+
+    return {
+      statusCode: resCode,
+      headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*"
+      },
+      body: JSON.stringify(resBody),
+  };
+
+}

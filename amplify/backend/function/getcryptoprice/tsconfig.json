@@ -8,7 +8,8 @@
       "moduleResolution": "node",
       "skipLibCheck": true,
       "resolveJsonModule": true,
-      "outDir": "./src"
+      "outDir": "./src", 
+      "allowJs": true
     },
     "include": ["lib"]
 }

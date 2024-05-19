@@ -21,7 +21,7 @@
       "function": {
         "getcryptoprice": {
           "deploymentBucketName": "amplify-cryptorupeetracker-dev-cde1d-deployment",
-          "s3Key": "amplify-builds/getcryptoprice-464c54356d6d6369674d-build.zip"
+          "s3Key": "amplify-builds/getcryptoprice-3468306234584d465748-build.zip"
         }
       },
       "api": {
