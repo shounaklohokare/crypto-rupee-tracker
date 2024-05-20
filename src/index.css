@@ -7,3 +7,20 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+
+@layer components{
+
+    .main-div{
+        @apply min-h-screen bg-slate-200;
+    }
+
+    .navbar{
+        @apply absolute top-0 h-24 w-full flex justify-center text-3xl bg-slate-950;
+    }
+
+    .header{
+        @apply uppercase text-white my-4 font-mono tracking-wider pt-4;
+    }
+  
+}

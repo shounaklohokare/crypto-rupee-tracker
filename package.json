@@ -13,6 +13,7 @@
   "dependencies": {
     "@aws-amplify/backend-cli": "^1.0.3",
     "aws-lambda": "^1.0.7",
+    "axios": "^1.7.1",
     "ccxt": "^4.3.27",
     "currency-converter-lt": "^2.0.1",
     "react": "^18.2.0",

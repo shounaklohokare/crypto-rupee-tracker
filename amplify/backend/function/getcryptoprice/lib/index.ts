@@ -48,16 +48,17 @@ const getUsdInrRate = async () : Promise<number | string> => {
 const getCryptoData = async (usdInrRate : number) : Promise<CryptoData[] | string>  => {
 
   try {
+
       const exchange = new ccxt.binance();
+
+      await exchange.loadMarkets();
       
-      const TickersArray : Tickers = await exchange.fetchTickers();
+      const usdtMarkets : string[] = exchange.symbols.filter(symbol => symbol.endsWith('/USDT'));
+
+      const TickersArray : Tickers = await exchange.fetchTickers(usdtMarkets.splice(0, 50));
 
       const cryptoData : CryptoData[] = []
       for(const ticker in TickersArray){
-
-          if(!ticker.endsWith('/USDT')){
-              continue;
-          } 
 
           const priceInInr : number = (TickersArray[ticker]?.last ?? 0) * usdInrRate;
 

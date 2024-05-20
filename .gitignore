@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 amplify/backend/function/**/src/**/*.js
+src/constants/api_details.ts
 
 # Editor directories and files
 .vscode/*
