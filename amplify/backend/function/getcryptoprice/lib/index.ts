@@ -7,6 +7,8 @@ interface CryptoData extends Ticker {
     priceInInr : number
 }
 
+
+
 export const handler = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
@@ -52,10 +54,10 @@ const getCryptoData = async (usdInrRate : number) : Promise<CryptoData[] | strin
       const exchange = new ccxt.binance();
 
       await exchange.loadMarkets();
-      
-      const usdtMarkets : string[] = exchange.symbols.filter(symbol => symbol.endsWith('/USDT'));
 
-      const TickersArray : Tickers = await exchange.fetchTickers(usdtMarkets.splice(0, 50));
+      const top10Tickers = ['BTC/USDT',  'ETH/USDT', 'DOGE/USDT', 'SHIB/USDT', 'XRP/USDT', 'DAI/USDT',  'PEPE/USDT', 'ATOM/USDT','MATIC/USDT','DOT/USDT']
+      
+      const TickersArray : Tickers = await exchange.fetchTickers(top10Tickers);
 
       const cryptoData : CryptoData[] = []
       for(const ticker in TickersArray){

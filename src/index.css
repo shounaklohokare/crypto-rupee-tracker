@@ -12,7 +12,7 @@
 @layer components{
 
     .main-div{
-        @apply min-h-screen bg-slate-200;
+        @apply min-h-screen bg-slate-100;
     }
 
     .navbar{
@@ -21,6 +21,14 @@
 
     .header{
         @apply uppercase text-white my-4 font-mono tracking-wider pt-4;
+    }
+
+    .tbl-i-h{
+        @apply py-[1rem] px-[5rem] uppercase font-mono text-2xl;
+    }
+
+    .tbl-i-b{
+        @apply py-[0.45rem] px-[5rem] uppercase font-mono text-xl;
     }
   
 }
