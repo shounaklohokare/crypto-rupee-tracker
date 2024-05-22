@@ -15,6 +15,8 @@
     "aws-lambda": "^1.0.7",
     "axios": "^1.7.1",
     "ccxt": "^4.3.27",
+    "crypto-symbol": "^3.6.0",
+    "cryptocurrency-icons": "^0.18.1",
     "currency-converter-lt": "^2.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

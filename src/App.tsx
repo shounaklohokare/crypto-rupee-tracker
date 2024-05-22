@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import axios, { AxiosResponse } from 'axios';
-import { API_ID, API_KEY } from "./constants/api_details";
+// import axios, { AxiosResponse } from 'axios';
+// import { API_ID, API_KEY } from "./constants/api_details";
 import { Ticker } from "ccxt";
-// import res from './data.json';
+import res from './data.json';
+import TableRow from "./TableRow";
 
 interface CryptoData extends Ticker {
     priceInInr : number
@@ -10,18 +11,21 @@ interface CryptoData extends Ticker {
 
 const App = () => {
 
-    const headers = {
-        'x-api-key': API_KEY
-    }
+    // const headers = {
+    //     'x-api-key': API_KEY
+    // }
 
     const [cryptoData, setCryptoData] = useState<CryptoData[]>()
 
     const getCryptoData = async () => {
         try {
 
-            const res : AxiosResponse = await axios.get(`https://${API_ID}.execute-api.ap-south-1.amazonaws.com/dev/get-crypto-price`, {headers: headers});
+            // const res : AxiosResponse = await axios.get(`https://${API_ID}.execute-api.ap-south-1.amazonaws.com/dev/get-crypto-price`, {headers: headers});
 
-            setCryptoData(res?.data as CryptoData[]);
+            // console.log(res?.data)
+
+            setCryptoData(res as CryptoData[]);
+
     
 
          }catch (error) {
@@ -39,8 +43,8 @@ const App = () => {
                 <div className="navbar">
                     <h1 className="header">Crypto Rupee Tracker</h1>
                 </div>
-                <div className="pt-[8rem]">
-                    <table className="border-2 mx-auto mb-[4rem] border-black">
+                <div className="table-div">
+                    <table className="tbl">
                         <thead>
                             <tr>
                                 <th className="tbl-i-h">Symbol</th>
@@ -48,12 +52,13 @@ const App = () => {
                                 <th className="tbl-i-h">Change</th>
                             </tr>
                         </thead>
-                        <tbody className="text-center">
+                        <tbody className="table-body">
                             
-                            {cryptoData?.map((dataItem) => ( <tr><td className="tbl-i-b">{dataItem.symbol}</td> <td className="tbl-i-b">{dataItem.priceInInr}</td><td className="tbl-i-b">{dataItem.info?.priceChangePercent}%</td></tr>  ))   } 
+                            {cryptoData?.map((dataItem) => ( <TableRow symbol={dataItem.symbol} price={dataItem.priceInInr} percentChange ={dataItem.info.priceChangePercent as number}/>  ))   } 
                             
                         </tbody>
                     </table>
+
                 </div>
             </div>
 

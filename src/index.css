@@ -8,6 +8,9 @@
   box-sizing: border-box;
 }
 
+*{
+    overflow-x: hidden;
+}
 
 @layer components{
 
@@ -16,19 +19,31 @@
     }
 
     .navbar{
-        @apply absolute top-0 h-24 w-full flex justify-center text-3xl bg-slate-950;
+        @apply absolute top-0 h-24 w-full flex justify-center  bg-slate-950;
     }
 
     .header{
-        @apply uppercase text-white my-4 font-mono tracking-wider pt-4;
+        @apply uppercase text-white my-4 font-mono text-xl md:text-3xl tracking-wider pt-4;
     }
 
     .tbl-i-h{
-        @apply py-[1rem] px-[5rem] uppercase font-mono text-2xl;
+        @apply md:pb-[0.5rem] md:pt-[0.35rem] md:px-[5rem] md:tracking-wider uppercase text-[1.196rem] md:text-2xl;
     }
 
     .tbl-i-b{
-        @apply py-[0.45rem] px-[5rem] uppercase font-mono text-xl;
+        @apply py-[0.35rem] md:py-[0.75rem] px-2 md:px-[5rem] sm:px-[0.95rem] text-lg sm:tracking-tighter md:text-xl;
+    }
+
+    .table-div{
+        @apply pt-[8rem];
+    }
+
+    .tbl{
+        @apply text-gray-800  font-mono border md:border-2 divide-y-[0.225rem] divide-gray-600  md:border-spacing-x-7  md:border-spacing-y-3 m-auto  md:mx-auto mb-1 md:mb-[4rem] border-gray-600;
+    }
+
+    .table-body{
+        @apply text-center divide-y divide-gray-400;
     }
   
-}
+} 
