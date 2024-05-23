@@ -55,9 +55,9 @@ const getCryptoData = async (usdInrRate : number) : Promise<CryptoData[] | strin
 
       await exchange.loadMarkets();
 
-      const top10Tickers = ['BTC/USDT',  'ETH/USDT', 'DOGE/USDT', 'SHIB/USDT', 'XRP/USDT', 'DAI/USDT',  'PEPE/USDT', 'ATOM/USDT','MATIC/USDT','DOT/USDT']
+      const top20Tickers = ['BTC/USDT',  'ETH/USDT', 'DOGE/USDT', 'SHIB/USDT',  'BNB/USDT', 'SOL/USDT', 'ADA/USDT', 'AVAX/USDT', 'TRX/USDT', 'XRP/USDT', 'DAI/USDT',  'PEPE/USDT', 'ATOM/USDT','MATIC/USDT','DOT/USDT', 'LINK/USDT', 'NEAR/USDT','LTC/USDT','ICP/USDT', 'ARB/USDT']
       
-      const TickersArray : Tickers = await exchange.fetchTickers(top10Tickers);
+      const TickersArray : Tickers = await exchange.fetchTickers(top20Tickers);
 
       const cryptoData : CryptoData[] = []
       for(const ticker in TickersArray){

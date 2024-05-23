@@ -15,11 +15,13 @@
     "aws-lambda": "^1.0.7",
     "axios": "^1.7.1",
     "ccxt": "^4.3.27",
+    "coingecko-api": "^1.0.10",
     "crypto-symbol": "^3.6.0",
     "cryptocurrency-icons": "^0.18.1",
     "currency-converter-lt": "^2.0.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

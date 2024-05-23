@@ -31,9 +31,9 @@ const TableRow:FC<TableRowProps> = ({symbol, price, percentChange}) => {
     return <tr>
                 
                 <td className="tbl-i-b">
-                    <div className="flex md:space-x-5 space-x-2 pl-[0.0rem]">
+                    <div className="flex md:space-x-5 space-x-2 pl-[0.2rem]">
                         <div><SvgIcon ticker={`${symbol.split('/')[0]}`} /></div>
-                        <div className="md:pt-[0.375rem]">{symbol}</div>
+                        <div className="md:pt-[0.375rem]">{symbol.split('/')[0]}</div>
                     </div>
                 </td> 
                 <td className="tbl-i-b">₹{price < 0 ? price : formatPrice(price)}</td>
@@ -47,7 +47,7 @@ interface SvgIconProp{
     ticker : string
 }
 
-const SvgIcon:FC<SvgIconProp> = ({ticker}) => <img src={`${`https://cryptofonts.com/img/icons/${ticker.toLowerCase()}.svg`}`} className="h-5 md:h-10"/> 
+const SvgIcon:FC<SvgIconProp> = ({ticker}) => <img src={`${`https://cryptofonts.com/img/icons/${ticker.toLowerCase()}.svg`}`} className="h-6 mt-[0.2rem] md:h-10"/> 
 
  
 export default TableRow;

@@ -19,15 +19,15 @@
     }
 
     .navbar{
-        @apply absolute top-0 h-24 w-full flex justify-center  bg-slate-950;
+        @apply absolute top-0 h-24 w-full flex  bg-slate-950;
     }
 
     .header{
-        @apply uppercase text-white my-4 font-mono text-xl md:text-3xl tracking-wider pt-4;
+        @apply uppercase text-white my-4 font-mono mx-auto text-xl md:text-3xl tracking-wider pt-5;
     }
 
     .tbl-i-h{
-        @apply md:pb-[0.5rem] md:pt-[0.35rem] md:px-[5rem] md:tracking-wider uppercase text-[1.196rem] md:text-2xl;
+        @apply md:pb-[0.5rem] md:pt-[0.35rem] font-mono  md:px-[5rem] md:tracking-wider uppercase text-[1.196rem] md:text-2xl;
     }
 
     .tbl-i-b{
@@ -39,7 +39,7 @@
     }
 
     .tbl{
-        @apply text-gray-800  font-mono border md:border-2 divide-y-[0.225rem] divide-gray-600  md:border-spacing-x-7  md:border-spacing-y-3 m-auto  md:mx-auto mb-1 md:mb-[4rem] border-gray-600;
+        @apply text-gray-800 border md:border-2 divide-y-[0.225rem] divide-gray-600  md:border-spacing-x-7  md:border-spacing-y-3 m-auto  md:mx-auto mb-1 md:mb-[4rem] border-gray-600;
     }
 
     .table-body{
