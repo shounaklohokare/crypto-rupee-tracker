@@ -1,12 +1,35 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
-import * as ccxt from 'ccxt';
-import { Tickers, Ticker } from 'ccxt';
+import axios from 'axios';
 import * as CurrencyConverter from 'currency-converter-lt'
 
-interface CryptoData extends Ticker {
-    priceInInr : number
+interface CoinGeckoResponseData {
+    id : string
+    symbol : string
+    name : string
+    image : string
+    current_price : number
+    market_cap : number
+    market_cap_rank : number
+    fully_diluted_valuation : number
+    total_volume : number
+    high_24h : number
+    low_24h : number
+    price_change_24h : number
+    price_change_percentage_24h : number
+    market_cap_change_24h : number
+    circulating_supply : number
+    total_supply : number
+    max_supply : number
+    ath_change_percentage : number
+    ath : number
+    ath_date : string
+    roi : number | null
+    last_updated : string
 }
 
+interface CryptoData extends CoinGeckoResponseData {
+    price_in_rupees : number
+}
 
 
 export const handler = async (
@@ -46,38 +69,36 @@ const getUsdInrRate = async () : Promise<number | string> => {
   }
 
 }
+const getCryptoData = async (usdInrRate : number) : Promise<string | CryptoData[]>  => {
 
-const getCryptoData = async (usdInrRate : number) : Promise<CryptoData[] | string>  => {
+    try {
+  
+        
+        const coinGeckoResponse  = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false");
 
-  try {
+        const data : CoinGeckoResponseData[] = coinGeckoResponse.data;
 
-      const exchange = new ccxt.binance();
+        const cryptoData : CryptoData[] = []
+        for(const responseObj of data){
+           
+            const price_in_rupees : number = (responseObj?.current_price ?? 0) * usdInrRate;
+  
+            const obj : CryptoData = {
+                ...responseObj,
+                price_in_rupees
+            }
+  
+            cryptoData.push(obj)
 
-      await exchange.loadMarkets();
-
-      const top20Tickers = ['BTC/USDT',  'ETH/USDT', 'DOGE/USDT', 'SHIB/USDT',  'BNB/USDT', 'SOL/USDT', 'ADA/USDT', 'AVAX/USDT', 'TRX/USDT', 'XRP/USDT', 'DAI/USDT',  'PEPE/USDT', 'ATOM/USDT','MATIC/USDT','DOT/USDT', 'LINK/USDT', 'NEAR/USDT','LTC/USDT','ICP/USDT', 'ARB/USDT']
-      
-      const TickersArray : Tickers = await exchange.fetchTickers(top20Tickers);
-
-      const cryptoData : CryptoData[] = []
-      for(const ticker in TickersArray){
-
-          const priceInInr : number = (TickersArray[ticker]?.last ?? 0) * usdInrRate;
-
-          const obj : CryptoData = {
-              ...TickersArray[ticker],
-              priceInInr
-          }
-
-          cryptoData.push(obj)
-      }
-
-      return cryptoData;
-
-  }catch(error){
-    return `Erorr:- ${error}` ;
+        }
+  
+        return cryptoData;
+  
+    }catch(error){
+      return `Erorr:- ${error}` ;
+    }
   }
-}
+
 
 const generateResponse = (resCode : number, resBody: string | CryptoData[]) => {
 
