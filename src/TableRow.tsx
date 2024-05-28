@@ -1,12 +1,14 @@
-import { FC } from "react"
+import { FC, useState } from "react"
 
 interface TableRowProps {
+    name : string
+    image : string
     symbol : string
     price : number
     percentChange : number
 }
 
-const TableRow:FC<TableRowProps> = ({symbol, price, percentChange}) => {
+const TableRow:FC<TableRowProps> = ({symbol, image, name, price, percentChange}) => {
 
     const roundDown = (num : number, decimalPlaces : number) =>{
         const factor = Math.pow(10, decimalPlaces);
@@ -30,10 +32,10 @@ const TableRow:FC<TableRowProps> = ({symbol, price, percentChange}) => {
 
     return <tr>
                 
-                <td className="tbl-i-b">
-                    <div className="flex md:space-x-5 space-x-2 pl-[0.2rem]">
-                        <div><SvgIcon ticker={`${symbol.split('/')[0]}`} /></div>
-                        <div className="md:pt-[0.375rem]">{symbol.split('/')[0]}</div>
+                <td className="px-[4rem] flex">
+                    <div className="flex ml-[4.125rem] items-center justify-self-auto md:space-x-5 space-x-2">
+                        <div><SvgIcon symbol={`${symbol}`} image={image} /></div>
+                        <div className="md:pt-[0.375rem]">{name}</div>
                     </div>
                 </td> 
                 <td className="tbl-i-b">₹{price < 0 ? price : formatPrice(price)}</td>
@@ -43,11 +45,27 @@ const TableRow:FC<TableRowProps> = ({symbol, price, percentChange}) => {
 }
 
 
+
+
 interface SvgIconProp{
-    ticker : string
+    symbol : string
+    image : string
 }
 
-const SvgIcon:FC<SvgIconProp> = ({ticker}) => <img src={`${`https://cryptofonts.com/img/icons/${ticker.toLowerCase()}.svg`}`} className="h-6 mt-[0.2rem] md:h-10"/> 
+const SvgIcon:FC<SvgIconProp> = ({symbol, image}) => {
+    
+    
+    const [cryptoIcon, setCryptoIcon] = useState(`${`https://cryptofonts.com/img/icons/${symbol}.svg`}`);
+
+    
+
+    const handleError = () => {
+        setCryptoIcon(image)
+    }
+
+    return <img src={cryptoIcon} onError={handleError} className="h-6 mt-[0.2rem] md:h-10"/> 
+
+}
 
  
 export default TableRow;

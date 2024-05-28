@@ -14,7 +14,7 @@
 
 @layer components{
 
-    .main-div{
+.main-div{
         @apply min-h-screen bg-slate-100;
     }
 
@@ -27,11 +27,11 @@
     }
 
     .tbl-i-h{
-        @apply md:pb-[0.5rem] md:pt-[0.35rem] font-mono  md:px-[5rem] md:tracking-wider uppercase text-[1.196rem] md:text-2xl;
+        @apply md:pb-[0.5rem] md:pt-[0.35rem] font-mono md:px-[5rem] md:tracking-wider uppercase text-[1.196rem] md:text-2xl;
     }
 
     .tbl-i-b{
-        @apply py-[0.35rem] md:py-[0.75rem] px-2 md:px-[5rem] sm:px-[0.95rem] text-lg sm:tracking-tighter md:text-xl;
+        @apply py-[0.35rem] md:py-[0.75rem] md:px-[5rem] sm:px-[0.95rem] text-lg sm:tracking-tighter md:text-xl;
     }
 
     .table-div{
@@ -47,3 +47,7 @@
     }
   
 } 
+
+.table-body{
+    font-weight: 499;
+}

@@ -1,12 +1,36 @@
 import { useEffect, useState } from "react"
 // import axios, { AxiosResponse } from 'axios';
 // import { API_ID, API_KEY } from "./constants/api_details";
-import { Ticker } from "ccxt";
-import res from './data.json';
 import TableRow from "./TableRow";
+import res from './data.json'
 
-interface CryptoData extends Ticker {
-    priceInInr : number
+interface CoinGeckoResponseData {
+    id : string
+    symbol : string
+    name : string
+    image : string
+    current_price : number
+    market_cap : number
+    market_cap_rank : number
+    fully_diluted_valuation : number | null
+    total_volume : number
+    high_24h : number
+    low_24h : number
+    price_change_24h : number
+    price_change_percentage_24h : number
+    market_cap_change_24h : number
+    circulating_supply : number
+    total_supply : number | null
+    max_supply : number | null
+    ath_change_percentage : number
+    ath : number
+    ath_date : string
+    roi :  null | number | unknown
+    last_updated : string
+}
+
+interface CryptoData extends CoinGeckoResponseData {
+    price_in_rupees : number
 }
 
 const App = () => {
@@ -16,17 +40,17 @@ const App = () => {
     // }
 
     const [cryptoData, setCryptoData] = useState<CryptoData[]>()
+   
 
     const getCryptoData = async () => {
         try {
 
             // const res : AxiosResponse = await axios.get(`https://${API_ID}.execute-api.ap-south-1.amazonaws.com/dev/get-crypto-price`, {headers: headers});
 
-            // console.log(res?.data)
+            console.log(res)
 
-            setCryptoData(res as CryptoData[]);
+            setCryptoData(res);
 
-    
 
          }catch (error) {
         
@@ -54,7 +78,7 @@ const App = () => {
                         </thead>
                         <tbody className="table-body">
                             
-                            {cryptoData?.map((dataItem) => ( <TableRow symbol={dataItem.symbol} price={dataItem.priceInInr} percentChange ={dataItem.info.priceChangePercent as number}/>  ))   } 
+                            {cryptoData?.map((dataItem) => ( <TableRow symbol={dataItem.symbol} image={dataItem.image} name={dataItem.name} price={dataItem.price_in_rupees} percentChange ={dataItem.price_change_percentage_24h}/>  ))   } 
                             
                         </tbody>
                     </table>
