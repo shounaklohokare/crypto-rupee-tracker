@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 // import { API_ID, API_KEY } from "./constants/api_details";
 import TableRow from "./TableRow";
 import res from './data.json'
+import Pagination from "./Pagination";
+import { COINS_PER_PAGE } from "./constants/constants";
 
 interface CoinGeckoResponseData {
     id : string
@@ -40,6 +42,7 @@ const App = () => {
     // }
 
     const [cryptoData, setCryptoData] = useState<CryptoData[]>()
+    const [currentPage, setCurrentPage] = useState(3)
    
 
     const getCryptoData = async () => {
@@ -63,6 +66,11 @@ const App = () => {
         console.log(cryptoData)
     }, [])
 
+    
+    const lastCoinIdx = currentPage * COINS_PER_PAGE;
+    const firstCoinIdx = lastCoinIdx - COINS_PER_PAGE;
+    const coinsOnPage = cryptoData?.slice(firstCoinIdx, lastCoinIdx);
+
     return <div className="main-div">
                 <div className="navbar">
                     <h1 className="header">Crypto Rupee Tracker</h1>
@@ -78,11 +86,11 @@ const App = () => {
                         </thead>
                         <tbody className="table-body">
                             
-                            {cryptoData?.map((dataItem) => ( <TableRow symbol={dataItem.symbol} image={dataItem.image} name={dataItem.name} price={dataItem.price_in_rupees} percentChange ={dataItem.price_change_percentage_24h}/>  ))   } 
+                            {coinsOnPage?.map((dataItem) => ( <TableRow symbol={dataItem.symbol} image={dataItem.image} name={dataItem.name} price={dataItem.price_in_rupees} percentChange ={dataItem.price_change_percentage_24h}/>  ))   } 
                             
                         </tbody>
                     </table>
-
+                    <Pagination totalCoins={cryptoData?.length ?? 0} setCurrentPage={setCurrentPage}/>
                 </div>
             </div>
 

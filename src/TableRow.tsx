@@ -29,9 +29,7 @@ const TableRow:FC<TableRowProps> = ({symbol, image, name, price, percentChange})
 
     }
 
-
     return <tr>
-                
                 <td className="px-[4rem] flex">
                     <div className="flex ml-[4.125rem] items-center justify-self-auto md:space-x-5 space-x-2">
                         <div><SvgIcon symbol={`${symbol}`} image={image} /></div>
@@ -44,26 +42,22 @@ const TableRow:FC<TableRowProps> = ({symbol, image, name, price, percentChange})
 
 }
 
-
-
-
 interface SvgIconProp{
     symbol : string
     image : string
 }
 
 const SvgIcon:FC<SvgIconProp> = ({symbol, image}) => {
-    
-    
-    const [cryptoIcon, setCryptoIcon] = useState(`${`https://cryptofonts.com/img/icons/${symbol}.svg`}`);
 
-    
+    const [isLoaded, setIsLoaded] = useState(false);
+        
+    const [cryptoIcon, setCryptoIcon] = useState(`${`https://cryptofonts.com/img/icons/${symbol}.svg`}`);
 
     const handleError = () => {
         setCryptoIcon(image)
     }
 
-    return <img src={cryptoIcon} onError={handleError} className="h-6 mt-[0.2rem] md:h-10"/> 
+    return <>{isLoaded ? <img src={cryptoIcon} onError={handleError} onLoad={() => setIsLoaded(true)} className="h-6 mt-[0.2rem] md:h-10" key={cryptoIcon}/> : <p>Loading</p>}</>
 
 }
 
