@@ -14,7 +14,7 @@
 
 @layer components{
 
-.main-div{
+    .main-div{
         @apply min-h-screen bg-slate-100;
     }
 
@@ -26,24 +26,48 @@
         @apply uppercase text-white my-4 font-mono mx-auto text-xl md:text-3xl tracking-wider pt-5;
     }
 
-    .tbl-i-h{
-        @apply md:pb-[0.5rem] md:pt-[0.35rem] font-mono md:px-[5rem] md:tracking-wider uppercase text-[1.196rem] md:text-2xl;
+    .tbl-head-elem{
+        @apply  md:pb-[0.5rem] md:pt-[0.35rem] font-mono md:px-[5rem] px-3 md:tracking-wider uppercase text-[1.196rem] md:text-2xl;
     }
 
-    .tbl-i-b{
-        @apply py-[0.35rem] md:py-[0.75rem] md:px-[5rem] sm:px-[0.95rem] text-lg sm:tracking-tighter md:text-xl;
+    .symbol-col{
+        @apply absolute;
+    }
+
+    .symbol-cont{
+        @apply flex items-center justify-start;
+    }
+
+    .crypto-name{
+        @apply md:pt-[0.425rem] pt-[0.6rem] px-3 text-left md:text-xl;
+    }
+
+    .crypto-icon{
+        @apply h-6 md:ml-[3.25rem] ml-[0.225rem] md:mt-[0.25rem] mt-[0.65rem] md:h-10;
+    }
+
+    .tbl-body-elem{
+        @apply py-[0.75rem] px-3  sm:tracking-tighter md:text-xl;
     }
 
     .table-div{
         @apply pt-[8rem];
     }
 
+    .pagination-cont{
+        @apply flex md:space-x-3 space-x-1 md:py-1 py-4 md:my-1 my-1 justify-center;
+    }
+
+    .page-button{
+        @apply md:px-4 px-2 md:py-2 py-1 md:font-bold font-semibold border border-black rounded-md hover:shadow-[0px_0px_4px_4px_rgba(0,0,0,0.1)] bg-white/[0.2] text-sm transition duration-300;
+    }
+
     .tbl{
-        @apply text-gray-800 border md:border-2 divide-y-[0.225rem] divide-gray-600  md:border-spacing-x-7  md:border-spacing-y-3 m-auto  md:mx-auto mb-1 md:mb-[4rem] border-gray-600;
+        @apply text-gray-800 rounded-[0.375rem] border  md:border-2 divide-y-[0.225rem] divide-gray-600 w-[97%] mx-auto md:w-1/5 md:mx-auto mb-1 md:mb-[4rem] border-gray-600 border-separate odd:bg-slate-100 even:bg-red-200;
     }
 
     .table-body{
-        @apply text-center divide-y divide-gray-400;
+        @apply text-center divide-y divide-gray-400 odd:bg-slate-100;
     }
   
 } 

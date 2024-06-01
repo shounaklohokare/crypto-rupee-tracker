@@ -1,63 +1,49 @@
-import { FC, useState } from "react"
-
-interface TableRowProps {
-    name : string
-    image : string
-    symbol : string
-    price : number
-    percentChange : number
-}
+import { FC, useEffect, useState } from "react"
+import { CryptoNameProps, SvgIconProps, TableRowProps } from "./constants/constants";
+import { formatPrice, roundDown } from "./utils/utils";
+import { useMediaQuery } from 'react-responsive';
 
 const TableRow:FC<TableRowProps> = ({symbol, image, name, price, percentChange}) => {
 
-    const roundDown = (num : number, decimalPlaces : number) =>{
-        const factor = Math.pow(10, decimalPlaces);
-        return Math.floor(num * factor) / factor;
-    }
-
-    const formatPrice = (num : number) => {
-
-        if(num > 10000000){
-            const x = num/10000000;
-            return roundDown(x, 2) + " Crores";
-        }else if(num > 100000){
-            const x = num/100000;
-            return roundDown(x, 2) + " Lakhs"
-        }
-
-        return roundDown(num, 4)
-
-    }
-
     return <tr>
-                <td className="px-[4rem] flex">
-                    <div className="flex ml-[4.125rem] items-center justify-self-auto md:space-x-5 space-x-2">
+                <td className="symbol-col">
+                    <div className="symbol-cont">
                         <div><SvgIcon symbol={`${symbol}`} image={image} /></div>
-                        <div className="md:pt-[0.375rem]">{name}</div>
+                        <CryptoName name={name}/>
                     </div>
                 </td> 
-                <td className="tbl-i-b">₹{price < 0 ? price : formatPrice(price)}</td>
-                <td className={`tbl-i-b ${price >= 0 ? 'text-green-500' : 'text-red-500'}`}>{roundDown(percentChange,2)}%</td>
+                <td className="tbl-body-elem">₹{price < 0 ? price : formatPrice(price)}</td>
+                <td className={`tbl-body-elem ${price >= 0 ? 'text-green-500' : 'text-red-500'}`}>{roundDown(percentChange,2)}%</td>
             </tr>  
 
 }
 
-interface SvgIconProp{
-    symbol : string
-    image : string
+
+const CryptoName:FC<CryptoNameProps> = ({name}) => {
+
+    
+    const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+
+    return <div className={`crypto-name ${isMobile && name.length > 11 ? 'truncate w-[8rem] hover:w-[14rem] hover:bg-slate-100' : ''}`}>{name}</div>
+
+
 }
 
-const SvgIcon:FC<SvgIconProp> = ({symbol, image}) => {
+const SvgIcon:FC<SvgIconProps> = ({symbol, image}) => {
+  
+    const [cryptoIcon, setCryptoIcon] = useState("");
 
-    const [isLoaded, setIsLoaded] = useState(false);
-        
-    const [cryptoIcon, setCryptoIcon] = useState(`${`https://cryptofonts.com/img/icons/${symbol}.svg`}`);
+    useEffect(() => {
+        setCryptoIcon(`${`https://cryptofonts.com/img/icons/${symbol}.svg`}`)
+    }, [symbol])
+
 
     const handleError = () => {
         setCryptoIcon(image)
     }
 
-    return <>{isLoaded ? <img src={cryptoIcon} onError={handleError} onLoad={() => setIsLoaded(true)} className="h-6 mt-[0.2rem] md:h-10" key={cryptoIcon}/> : <p>Loading</p>}</>
+    return  <img src={cryptoIcon} onError={handleError} className="crypto-icon" key={cryptoIcon}/>
 
 }
 

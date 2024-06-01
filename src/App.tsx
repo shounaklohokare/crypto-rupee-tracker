@@ -4,36 +4,9 @@ import { useEffect, useState } from "react"
 import TableRow from "./TableRow";
 import res from './data.json'
 import Pagination from "./Pagination";
-import { COINS_PER_PAGE } from "./constants/constants";
+import { COINS_PER_PAGE, CryptoData  } from "./constants/constants";
 
-interface CoinGeckoResponseData {
-    id : string
-    symbol : string
-    name : string
-    image : string
-    current_price : number
-    market_cap : number
-    market_cap_rank : number
-    fully_diluted_valuation : number | null
-    total_volume : number
-    high_24h : number
-    low_24h : number
-    price_change_24h : number
-    price_change_percentage_24h : number
-    market_cap_change_24h : number
-    circulating_supply : number
-    total_supply : number | null
-    max_supply : number | null
-    ath_change_percentage : number
-    ath : number
-    ath_date : string
-    roi :  null | number | unknown
-    last_updated : string
-}
 
-interface CryptoData extends CoinGeckoResponseData {
-    price_in_rupees : number
-}
 
 const App = () => {
 
@@ -42,7 +15,7 @@ const App = () => {
     // }
 
     const [cryptoData, setCryptoData] = useState<CryptoData[]>()
-    const [currentPage, setCurrentPage] = useState(3)
+    const [currentPage, setCurrentPage] = useState(1)
    
 
     const getCryptoData = async () => {
@@ -79,18 +52,16 @@ const App = () => {
                     <table className="tbl">
                         <thead>
                             <tr>
-                                <th className="tbl-i-h">Symbol</th>
-                                <th className="tbl-i-h">Price</th>
-                                <th className="tbl-i-h">Change</th>
+                                <th className="tbl-head-elem">Symbol</th>
+                                <th className="tbl-head-elem">Price</th>
+                                <th className="tbl-head-elem">Change</th>
                             </tr>
                         </thead>
                         <tbody className="table-body">
-                            
                             {coinsOnPage?.map((dataItem) => ( <TableRow symbol={dataItem.symbol} image={dataItem.image} name={dataItem.name} price={dataItem.price_in_rupees} percentChange ={dataItem.price_change_percentage_24h}/>  ))   } 
-                            
                         </tbody>
                     </table>
-                    <Pagination totalCoins={cryptoData?.length ?? 0} setCurrentPage={setCurrentPage}/>
+                    <Pagination totalCoins={cryptoData?.length ?? 0} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
                 </div>
             </div>
 
