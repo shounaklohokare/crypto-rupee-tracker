@@ -5,6 +5,7 @@ import TableRow from "./TableRow";
 import res from './data.json'
 import Pagination from "./Pagination";
 import { COINS_PER_PAGE, CryptoData  } from "./constants/constants";
+import Footer from "./Footer";
 
 
 
@@ -63,6 +64,7 @@ const App = () => {
                     </table>
                     <Pagination totalCoins={cryptoData?.length ?? 0} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
                 </div>
+                <Footer/>
             </div>
 
 }
