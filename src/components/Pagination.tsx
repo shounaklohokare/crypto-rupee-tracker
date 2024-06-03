@@ -1,12 +1,5 @@
 import { FC } from "react";
-import { COINS_PER_PAGE } from './constants/constants'
-
-
-interface PaginationProps {
-    totalCoins : number
-    setCurrentPage : (arg0:number)=> void
-    currentPage : number
-}
+import { PaginationProps, COINS_PER_PAGE } from "../utils/constants";
 
 const Pagination:FC<PaginationProps> = ({totalCoins, setCurrentPage, currentPage}) => {
 

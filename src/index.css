@@ -15,7 +15,7 @@
 @layer components{
 
     .main-div{
-        @apply min-h-screen bg-slate-100;
+        @apply  bg-slate-100;
     }
 
     .navbar{
@@ -31,7 +31,7 @@
     }
 
     .symbol-col{
-        @apply absolute;
+        @apply  absolute;
     }
 
     .symbol-cont{
@@ -44,6 +44,10 @@
 
     .crypto-icon{
         @apply h-6 md:ml-[3.25rem] ml-[0.225rem] md:mt-[0.25rem] mt-[0.65rem] md:h-10;
+    }
+
+    .crypto-icon-lg{
+        @apply h-12 md:h-16;
     }
 
     .tbl-body-elem{
@@ -70,9 +74,8 @@
         @apply text-center divide-y divide-gray-400 odd:bg-slate-100;
     }
 
-    
     .footer{
-        @apply bottom-0 flex justify-center items-end text-sm h-[4.75rem] mt-[2rem] md:h-[6.225rem] bg-slate-950;
+        @apply w-full bottom-0 flex justify-center items-end text-sm h-[4.75rem] md:h-[6.225rem] bg-slate-950;
     }
 
     .footer-text{

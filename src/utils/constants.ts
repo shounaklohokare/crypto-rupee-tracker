@@ -37,7 +37,19 @@ export interface TableRowProps {
     percentChange : number
 }
 
-export interface SvgIconProp{
+export interface SvgIconProps{
     symbol : string
     image : string
+    size : string
+}
+
+export interface CryptoNameProps{
+    name : string
+}
+
+
+export interface PaginationProps {
+    totalCoins : number
+    setCurrentPage : (arg0:number)=> void
+    currentPage : number
 }
