@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { CryptoNameProps,  TableRowProps } from "../utils/constants";
-import { formatPrice, roundDown } from "../utils/utils";
+import { formatNum, roundDown } from "../utils/utils";
 import CryptoSvgIcon from "./CryptoSvgIcon";
 
 const TableRow:FC<TableRowProps> = ({symbol, image, name, price, percentChange}) => {
@@ -17,7 +17,7 @@ const TableRow:FC<TableRowProps> = ({symbol, image, name, price, percentChange})
                         <CryptoName name={name}/>
                     </div>
                 </td> 
-                <td className="tbl-body-elem">₹{price < 0 ? price : formatPrice(price)}</td>
+                <td className="tbl-body-elem">₹{price < 0 ? price : formatNum(price)}</td>
                 <td className={`tbl-body-elem ${price >= 0 ? 'text-green-500' : 'text-red-500'}`}>{roundDown(percentChange,2)}%</td>
             </tr>  
 

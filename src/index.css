@@ -19,11 +19,11 @@
     }
 
     .navbar{
-        @apply absolute top-0 h-24 w-full flex  bg-slate-950;
+        @apply absolute top-0 h-24 w-full flex justify-center items-center bg-slate-950;
     }
 
     .header{
-        @apply uppercase text-white my-4 font-mono mx-auto text-xl md:text-3xl tracking-wider pt-5;
+        @apply uppercase text-white font-mono text-xl md:text-3xl tracking-wider;
     }
 
     .tbl-head-elem{
@@ -47,7 +47,7 @@
     }
 
     .crypto-icon-lg{
-        @apply h-12 md:h-16;
+        @apply h-12 md:h-14 ;
     }
 
     .tbl-body-elem{
@@ -82,6 +82,52 @@
         @apply md:text-lg text-white font-mono mb-4 cursor-default;
     }
   
+    /*   Crypto Details */
+
+    .crypto-details-cont{
+        @apply main-div md:h-[calc(100vh-3rem)] min-h-[calc(100vh-8vh)];
+    }
+
+    .crypto-details-div{
+        @apply mt-[4.5rem] md:mt-[6.69rem] flex flex-col justify-center;
+    }
+
+    .crypto-details-header-cont{
+        @apply flex justify-center md:space-x-6 space-x-4 pr-10 md:mt-4 mt-8;
+    }
+    
+    .crypto-details-header{
+        @apply text-3xl md:text-[2.87rem] mt-[0.475rem] font-mono overflow-hidden;
+    }
+
+    .details-cont{
+        @apply flex flex-col mt-[5rem] text-nowrap mx-[9.15rem];
+    }
+
+    .details-header{
+        @apply uppercase text-center font-bold italic text-4xl font-mono overflow-y-hidden;
+    }
+
+    .details-inner-cont{
+        @apply flex flex-wrap flex-col md:flex-row my-12 text-xl md:text-3xl;
+    }
+
+    .ltp-cont{
+        @apply overflow-hidden w-full md:w-1/3 py-8 uppercase flex text-xl md:text-2xl;
+    }
+
+    .crypto-stat{
+        @apply   md:w-1/3 py-4 md:py-8 flex md:flex-row text-center flex-col text-lg md:text-2xl;
+    }
+
+
+
+
+
+
+
+
+
 } 
 
 .table-body{

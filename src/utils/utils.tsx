@@ -4,9 +4,12 @@ export const roundDown = (num : number, decimalPlaces : number) =>{
     return Math.floor(num * factor) / factor;
 }
 
-export const formatPrice = (num : number) => {
+export const formatNum = (num : number) => {
 
-    if(num > 10000000){
+    if(num > 10000000000){
+        const x = num/10000000000;
+        return roundDown(x, 2) + "K Crores";
+    }else if(num > 10000000){
         const x = num/10000000;
         return roundDown(x, 2) + " Crores";
     }else if(num > 100000){
@@ -15,5 +18,17 @@ export const formatPrice = (num : number) => {
     }
 
     return roundDown(num, 4)
+
+}
+
+export const formatDate = (dateInStr : string) => {
+
+    const date = new Date(dateInStr);
+
+    const day = date.getDate();
+    const month = date.toLocaleString('en-US', { month: 'short' });
+    const year = date.getFullYear();
+
+    return `${day}th ${month} ${year}`;
 
 }
