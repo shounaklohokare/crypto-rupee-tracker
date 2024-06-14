@@ -18,7 +18,7 @@ const TableRow:FC<TableRowProps> = ({symbol, image, name, price, percentChange})
                     </div>
                 </td> 
                 <td className="tbl-body-elem">₹{price < 0 ? price : formatNum(price)}</td>
-                <td className={`tbl-body-elem ${price >= 0 ? 'text-green-500' : 'text-red-500'}`}>{roundDown(percentChange,2)}%</td>
+                <td className={`tbl-body-elem ${percentChange >= 0 ? 'text-green-500' : 'text-red-500'}`}>{roundDown(percentChange,2)}%</td>
             </tr>  
 
 }

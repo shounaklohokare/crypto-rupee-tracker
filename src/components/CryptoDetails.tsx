@@ -5,7 +5,7 @@ import { CryptoData } from "../utils/constants";
 import CryptoDataContext from "../utils/CryptoDataContext";
 import { roundDown, formatNum, formatDate } from "../utils/utils";
 import { MdArrowDropDown, MdArrowDropUp } from "react-icons/md";
-
+import { useMediaQuery } from 'react-responsive';
 
 
 const CryptoDetails:FC = () => {
@@ -28,17 +28,13 @@ const CryptoDetails:FC = () => {
                         <h1 className="crypto-details-header">{symbolDetails.name}</h1>
                 </div>
                 <div className="details-cont">
-                    <div className="details-inner-cont">
                         <Ltp price={symbolDetails.price_in_rupees} percent_change={symbolDetails.price_change_percentage_24h} />
-                        <h1 className="crypto-stat"><span className="font-semibold md:pr-[0.3rem]">Circulating Supply</span><span>{formatNum(symbolDetails.circulating_supply)}</span></h1>
-                        <h1 className="crypto-stat"><span className="font-semibold md:pr-[0.3rem]">All Time High</span><span>₹{formatNum(roundDown(symbolDetails.ath, 2))}</span></h1>
-                        <h1 className="crypto-stat"><span className="font-semibold md:pr-[0.3rem]">All Time High Change</span><span>{roundDown(symbolDetails.ath_change_percentage, 2)}%</span></h1>
-                        <h1 className="crypto-stat"><span className="font-semibold md:pr-[0.3rem]">All Time High Date</span><span>{formatDate(symbolDetails.ath_date)}</span></h1>
-                        <h1 className="crypto-stat"><span className="font-semibold md:pr-[0.3rem]">Market Cap</span><span>₹{formatNum(symbolDetails.market_cap)}</span></h1>
-                        <h1 className="crypto-stat"><span className="font-semibold md:pr-[0.3rem]">Market Cap Rank</span><span>{symbolDetails.market_cap_rank}</span></h1>
-                    </div>
-                    {/* price_in_rupees price_change_percentage_24h  */}
-                    
+                        <CryptoStat property={"Circulating Supply"} value={formatNum(symbolDetails.circulating_supply)}/>
+                        <CryptoStat property={"All Time High"} value={`₹${formatNum(roundDown(symbolDetails.ath, 2))}`}/>
+                        <CryptoStat property={"All Time High Change"} value={`${roundDown(symbolDetails.ath_change_percentage, 2)}%`}/>
+                        <CryptoStat property={"All Time High Date"} value={formatDate(symbolDetails.ath_date)}/>
+                        <CryptoStat property={"Market Cap"} value={`₹${formatNum(symbolDetails.market_cap)}`}/>
+                        <CryptoStat property={"Market Cap Rank"} value={symbolDetails.market_cap_rank}/>
                 </div>
                 
             </div>
@@ -54,7 +50,27 @@ interface LtpProps {
 }
 
 const Ltp:FC<LtpProps> = ({price, percent_change}) => {
-    return  <h1 className="ltp-cont"><span className="font-semibold">LTP</span>: ₹{roundDown(price, 2)} <h3 className={`text-[1rem] px-1 font-semibold my-auto flex ${percent_change >= 0 ? `text-green-500` : 'text-red-500'}`}>{roundDown(percent_change, 2)}% {percent_change >= 0 ? <MdArrowDropUp size={28}/> : <MdArrowDropDown size={28}/> }</h3></h1>
+
+    const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+    const seperator = isMobile ? '' : ': ';
+
+    return  <h1 className="crypto-stat "><span className="font-semibold mr-1">{`Current Price${seperator}`}</span><div className="flex md:m-0  ml-6">₹{roundDown(price, 2)} <h3 className={`text-[1rem] ml-1 font-semibold flex ${percent_change >= 0 ? `text-green-500` : 'text-red-500'}`}>{roundDown(percent_change, 2)}% {percent_change >= 0 ? <MdArrowDropUp size={28}/> : <MdArrowDropDown size={28}/> }</h3></div></h1>
+}
+
+interface CryptoStatProps {
+    property : string
+    value : string | number
+}
+
+const CryptoStat:FC<CryptoStatProps> = ({property, value}) => {
+
+    const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+    const seperator = isMobile ? '' : ': ';
+
+    return <h1 className="crypto-stat"><span className="font-semibold mr-1">{property + seperator}</span><span>{value}</span></h1>
+
 }
 
 export default CryptoDetails;
