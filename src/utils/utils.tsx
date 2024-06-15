@@ -1,25 +1,28 @@
+import numeral from 'numeral'
 
-export const roundDown = (num : number, decimalPlaces : number) =>{
-    const factor = Math.pow(10, decimalPlaces);
-    return String(Math.floor(num * factor) / factor);
+export const roundDown = (num : number) =>{
+    return numeral(num).format('0,0.00');
 }
 
 export const formatNum = (num : string | number) => {
 
     const n = Number(num)
 
-    if(n > 10000000000){
+    if(n > 1000000000000){
+        const x = n/1000000000000;
+        return roundDown(x)+ " Lakh Crores";
+    }else if(n > 10000000000){
         const x = n/10000000000;
-        return roundDown(x, 2) + "K Crores";
+        return roundDown(x)+ " Thousand Crores";
     }else if(n > 10000000){
         const x = n/10000000;
-        return roundDown(x, 2) + " Crores";
+        return roundDown(x) + " Crores";
     }else if(n > 100000){
         const x = n/100000;
-        return roundDown(x, 2) + " Lakhs"
+        return roundDown(x) + " Lakhs"
     }
 
-    return roundDown(n, 4)
+    return roundDown(n)
 
 }
 

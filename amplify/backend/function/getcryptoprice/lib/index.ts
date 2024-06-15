@@ -29,6 +29,8 @@ interface CoinGeckoResponseData {
 
 interface CryptoData extends CoinGeckoResponseData {
     price_in_rupees : number
+    ath_in_rupees : number
+    mcap_in_rupees : number
 }
 
 
@@ -82,10 +84,14 @@ const getCryptoData = async (usdInrRate : number) : Promise<string | CryptoData[
         for(const responseObj of data){
            
             const price_in_rupees : number = (responseObj?.current_price ?? 0) * usdInrRate;
+            const ath_in_rupees : number = (responseObj?.ath ?? 0) * usdInrRate;
+            const mcap_in_rupees : number = (responseObj?.market_cap ?? 0) * usdInrRate;
   
             const obj : CryptoData = {
                 ...responseObj,
-                price_in_rupees
+                price_in_rupees,
+                ath_in_rupees,
+                mcap_in_rupees
             }
   
             cryptoData.push(obj)

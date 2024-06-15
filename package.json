@@ -19,6 +19,7 @@
     "crypto-symbol": "^3.6.0",
     "cryptocurrency-icons": "^0.18.1",
     "currency-converter-lt": "^2.0.1",
+    "numeral": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.1",
@@ -26,6 +27,7 @@
     "react-router-dom": "^6.23.1"
   },
   "devDependencies": {
+    "@types/numeral": "^2.0.5",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",

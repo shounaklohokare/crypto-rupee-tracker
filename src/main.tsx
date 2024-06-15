@@ -20,6 +20,7 @@ const App = () => {
     // }
 
     const [cryptoData, setCryptoData] = useState<CryptoData[]>()
+    const [loading, setLoading] = useState(true)
 
     
     const getCryptoData = async () => {
@@ -29,8 +30,12 @@ const App = () => {
 
             console.log(res)
 
-            setCryptoData(res);
 
+
+            setTimeout(() => {
+                setCryptoData(res)
+                setLoading(false)
+              }, 6000);
 
          }catch (error) {
         
@@ -45,7 +50,7 @@ const App = () => {
 
 
     return  <>
-                <CryptoDataContext.Provider value={cryptoData ?? []}>
+                <CryptoDataContext.Provider value={{cryptoData, loading}}>
                     <Navbar/>
                     <Outlet/>
                     <Footer/>

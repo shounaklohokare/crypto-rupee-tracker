@@ -9,8 +9,7 @@ const TableRow:FC<TableRowProps> = ({symbol, image, name, price, percentChange})
 
     const navigate = useNavigate();
 
-    return <tr className="hover:shadow-md hover:shadow-gray-1/50 hover:shadow-gray-300/100 transition-shadow duration-300 cursor-pointer" onClick={()=> { navigate(`/crypto/${symbol}`)}}>
-
+    return <tr className="tbl-row hover:shadow-gray-1/50 hover:shadow-gray-300/100" onClick={()=> { navigate(`/crypto/${symbol}`)}}>
                 <td className="symbol-col">
                     <div className="symbol-cont">
                         <div><CryptoSvgIcon symbol={`${symbol}`} image={image} size='M' /></div>
@@ -26,14 +25,9 @@ const TableRow:FC<TableRowProps> = ({symbol, image, name, price, percentChange})
 
 const CryptoName:FC<CryptoNameProps> = ({name}) => {
 
-    
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
-    console.log(name.length)
-
-
     return <div className={`crypto-name ${isMobile && name.length > 11 ? 'truncate w-[6.5rem] hover:w-[14rem] hover:bg-slate-100' : name.length > 17 ? 'truncate w-[12rem] hover:w-[15rem] hover:bg-slate-100' : ''}`}>{name}</div>
-
 
 }
 

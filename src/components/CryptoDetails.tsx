@@ -12,13 +12,9 @@ const CryptoDetails:FC = () => {
 
     const { cryptoSymbol } = useParams()
 
-    const cryptoData : CryptoData[]  =  useContext(CryptoDataContext)
+    const {cryptoData} =  useContext(CryptoDataContext)
 
-    const symbolDetails : CryptoData | undefined = cryptoData?.find((e) => e.symbol == cryptoSymbol) 
-
-    if (symbolDetails == undefined) {
-        return <h1>Error</h1>
-    }
+    const symbolDetails  = cryptoData?.find((e) => e.symbol == cryptoSymbol) as CryptoData
 
     return <div className="crypto-details-cont">
         
@@ -30,8 +26,8 @@ const CryptoDetails:FC = () => {
                 <div className="details-cont">
                         <Ltp price={symbolDetails.price_in_rupees} percent_change={symbolDetails.price_change_percentage_24h} />
                         <CryptoStat property={"Circulating Supply"} value={formatNum(symbolDetails.circulating_supply)}/>
-                        <CryptoStat property={"All Time High"} value={`₹${formatNum(roundDown(symbolDetails.ath, 2))}`}/>
-                        <CryptoStat property={"All Time High Change"} value={`${roundDown(symbolDetails.ath_change_percentage, 2)}%`}/>
+                        <CryptoStat property={"All Time High"} value={`₹${formatNum(roundDown(symbolDetails.ath))}`}/>
+                        <CryptoStat property={"All Time High Change"} value={`${roundDown(symbolDetails.ath_change_percentage)}%`}/>
                         <CryptoStat property={"All Time High Date"} value={formatDate(symbolDetails.ath_date)}/>
                         <CryptoStat property={"Market Cap"} value={`₹${formatNum(symbolDetails.market_cap)}`}/>
                         <CryptoStat property={"Market Cap Rank"} value={symbolDetails.market_cap_rank}/>
@@ -55,7 +51,7 @@ const Ltp:FC<LtpProps> = ({price, percent_change}) => {
 
     const seperator = isMobile ? '' : ': ';
 
-    return  <h1 className="crypto-stat "><span className="font-semibold mr-1">{`Current Price${seperator}`}</span><div className="flex md:m-0  ml-6">₹{roundDown(price, 2)} <h3 className={`text-[1rem] ml-1 font-semibold flex ${percent_change >= 0 ? `text-green-500` : 'text-red-500'}`}>{roundDown(percent_change, 2)}% {percent_change >= 0 ? <MdArrowDropUp size={28}/> : <MdArrowDropDown size={28}/> }</h3></div></h1>
+    return  <h1 className="crypto-stat "><span className="font-semibold mr-1">{`Current Price${seperator}`}</span><div className="flex md:m-0  ml-6">₹{roundDown(price)} <h3 className={`text-[1rem] ml-1 font-semibold flex ${percent_change >= 0 ? `text-green-500` : 'text-red-500'}`}>{roundDown(percent_change)}% {percent_change >= 0 ? <MdArrowDropUp size={28}/> : <MdArrowDropDown size={28}/> }</h3></div></h1>
 }
 
 interface CryptoStatProps {

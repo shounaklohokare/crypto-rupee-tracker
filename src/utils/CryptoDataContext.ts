@@ -1,6 +1,12 @@
 import { createContext } from "react";
 import { CryptoData } from "./constants";
 
-const CryptoDataContext = createContext<CryptoData[] | []>([])
+
+interface CryptoDataContextProps{
+    cryptoData : CryptoData[] | []
+    loading : boolean
+}
+
+const CryptoDataContext = createContext<CryptoDataContextProps>({cryptoData : [], loading : true})
 
 export default CryptoDataContext;
