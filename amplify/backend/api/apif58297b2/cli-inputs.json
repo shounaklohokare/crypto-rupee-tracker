@@ -3,7 +3,7 @@
   "paths": {
     "/get-crypto-price": {
       "name": "/get-crypto-price",
-      "lambdaFunction": "getcryptoprice",
+      "lambdaFunction": "cryptorupeetracker3a83ae46",
       "permissions": {
         "setting": "open"
       }

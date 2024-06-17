@@ -1,5 +1,5 @@
 import { FC, useContext } from "react";
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import CryptoSvgIcon from "./CryptoSvgIcon";
 import { CryptoData } from "../utils/constants";
 import CryptoDataContext from "../utils/CryptoDataContext";
@@ -10,11 +10,19 @@ import { useMediaQuery } from 'react-responsive';
 
 const CryptoDetails:FC = () => {
 
+    const navigate = useNavigate()
+
     const { cryptoSymbol } = useParams()
 
     const {cryptoData} =  useContext(CryptoDataContext)
 
+    if(cryptoData === null || cryptoData === undefined){
+        navigate("")
+    }
+
     const symbolDetails  = cryptoData?.find((e) => e.symbol == cryptoSymbol) as CryptoData
+
+    
 
     return <div className="crypto-details-cont">
         

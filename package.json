@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "amplify:getcryptoprice": "cd amplify/backend/function/getcryptoprice && tsc -p ./tsconfig.json"
+    "amplify:getcryptoprice": "cd amplify/backend/function/cryptorupeetracker3a83ae46/ && tsc -p ./tsconfig.json"
   },
   "dependencies": {
     "@aws-amplify/backend-cli": "^1.0.3",

@@ -1,6 +1,6 @@
 {
   "api": {
-    "api63085d4a": {
+    "apif58297b2": {
       "dependsOn": [
         {
           "attributes": [
@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "getcryptoprice"
+          "resourceName": "cryptorupeetracker3a83ae46"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -16,49 +16,26 @@
     }
   },
   "function": {
-    "getcryptoprice": {
+    "cryptorupeetracker3a83ae46": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
-  "hosting": {
-    "amplifyhosting": {
-      "providerPlugin": "awscloudformation",
-      "service": "amplifyhosting",
-      "type": "manual"
-    }
-  },
   "parameters": {
-    "AMPLIFY_function_getcryptoprice_deploymentBucketName": {
+    "AMPLIFY_function_cryptorupeetracker3a83ae46_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "getcryptoprice"
+          "resourceName": "cryptorupeetracker3a83ae46"
         }
       ]
     },
-    "AMPLIFY_function_getcryptoprice_s3Key": {
+    "AMPLIFY_function_cryptorupeetracker3a83ae46_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "getcryptoprice"
-        }
-      ]
-    },
-    "AMPLIFY_hosting_amplifyhosting_appId": {
-      "usedBy": [
-        {
-          "category": "hosting",
-          "resourceName": "amplifyhosting"
-        }
-      ]
-    },
-    "AMPLIFY_hosting_amplifyhosting_type": {
-      "usedBy": [
-        {
-          "category": "hosting",
-          "resourceName": "amplifyhosting"
+          "resourceName": "cryptorupeetracker3a83ae46"
         }
       ]
     }

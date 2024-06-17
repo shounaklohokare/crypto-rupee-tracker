@@ -1,31 +1,25 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-cryptorupeetracker-dev-cde1d-authRole",
-      "UnauthRoleArn": "arn:aws:iam::174495933663:role/amplify-cryptorupeetracker-dev-cde1d-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::174495933663:role/amplify-cryptorupeetracker-dev-cde1d-authRole",
+      "AuthRoleName": "amplify-cryptorupeetracker-dev-1dfb9-authRole",
+      "UnauthRoleArn": "arn:aws:iam::174495933663:role/amplify-cryptorupeetracker-dev-1dfb9-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::174495933663:role/amplify-cryptorupeetracker-dev-1dfb9-authRole",
       "Region": "ap-south-1",
-      "DeploymentBucketName": "amplify-cryptorupeetracker-dev-cde1d-deployment",
-      "UnauthRoleName": "amplify-cryptorupeetracker-dev-cde1d-unauthRole",
-      "StackName": "amplify-cryptorupeetracker-dev-cde1d",
-      "StackId": "arn:aws:cloudformation:ap-south-1:174495933663:stack/amplify-cryptorupeetracker-dev-cde1d/f09a7860-14eb-11ef-829e-0aba7fb8250b",
-      "AmplifyAppId": "d38c2hefh0hpj3"
+      "DeploymentBucketName": "amplify-cryptorupeetracker-dev-1dfb9-deployment",
+      "UnauthRoleName": "amplify-cryptorupeetracker-dev-1dfb9-unauthRole",
+      "StackName": "amplify-cryptorupeetracker-dev-1dfb9",
+      "StackId": "arn:aws:cloudformation:ap-south-1:174495933663:stack/amplify-cryptorupeetracker-dev-1dfb9/428a6d90-2cd1-11ef-95f2-0ab35b4462b5",
+      "AmplifyAppId": "dhccwisbatvcp"
     },
     "categories": {
-      "hosting": {
-        "amplifyhosting": {
-          "appId": "d38c2hefh0hpj3",
-          "type": "manual"
-        }
-      },
       "function": {
-        "getcryptoprice": {
-          "deploymentBucketName": "amplify-cryptorupeetracker-dev-cde1d-deployment",
-          "s3Key": "amplify-builds/getcryptoprice-31702f69327038355447-build.zip"
+        "cryptorupeetracker3a83ae46": {
+          "deploymentBucketName": "amplify-cryptorupeetracker-dev-1dfb9-deployment",
+          "s3Key": "amplify-builds/cryptorupeetracker3a83ae46-7a4548565969676a344c-build.zip"
         }
       },
       "api": {
-        "api63085d4a": {}
+        "apif58297b2": {}
       }
     }
   }

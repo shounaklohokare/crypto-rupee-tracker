@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "getcryptoprice",
+            "cryptorupeetracker3a83ae46",
             {
               "Fn::Join": [
                 "",
                 [
-                  "getcryptoprice",
+                  "cryptorupeetracker3a83ae46",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "cryptorupeetrackerLambdaRole8cf3554d",
+            "cryptorupeetrackerLambdaRole294ea409",
             {
               "Fn::Join": [
                 "",
                 [
-                  "cryptorupeetrackerLambdaRole8cf3554d",
+                  "cryptorupeetrackerLambdaRole294ea409",
                   "-",
                   {
                     "Ref": "env"

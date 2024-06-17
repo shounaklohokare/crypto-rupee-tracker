@@ -3,9 +3,9 @@ import { CiHome } from "react-icons/ci";
 
 const Error = () => {
 
-    return <div className="error-page">
+    return <div className="main-div flex align-middle justify-center items-center">
         <div className="absolute top-5 left-10"><Link to=""><CiHome size="36" /></Link></div>
-        404 Error : Page Not Found
+        <h1 className="md:text-5xl text-xl text-center py-4 my-6 font-semibold overflow-hidden text-wrap">Something went wrong! Go to home page and try again!</h1>
     </div>
 
 }
