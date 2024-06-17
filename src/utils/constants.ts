@@ -23,6 +23,8 @@ interface CoinGeckoResponseData {
     ath_date : string
     roi :  null | number | unknown
     last_updated : string
+    ath_in_rupees : number
+    mcap_in_rupees : number
 }
 
 export interface CryptoData extends CoinGeckoResponseData {

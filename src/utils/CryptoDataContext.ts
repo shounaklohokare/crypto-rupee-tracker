@@ -3,7 +3,7 @@ import { CryptoData } from "./constants";
 
 
 interface CryptoDataContextProps{
-    cryptoData : CryptoData[] | []
+    cryptoData : CryptoData[] | [] | undefined
     loading : boolean
 }
 

@@ -26,10 +26,10 @@ const CryptoDetails:FC = () => {
                 <div className="details-cont">
                         <Ltp price={symbolDetails.price_in_rupees} percent_change={symbolDetails.price_change_percentage_24h} />
                         <CryptoStat property={"Circulating Supply"} value={formatNum(symbolDetails.circulating_supply)}/>
-                        <CryptoStat property={"All Time High"} value={`₹${formatNum(roundDown(symbolDetails.ath))}`}/>
+                        <CryptoStat property={"All Time High"} value={`₹${formatNum(symbolDetails.ath_in_rupees)}`}/>
                         <CryptoStat property={"All Time High Change"} value={`${roundDown(symbolDetails.ath_change_percentage)}%`}/>
                         <CryptoStat property={"All Time High Date"} value={formatDate(symbolDetails.ath_date)}/>
-                        <CryptoStat property={"Market Cap"} value={`₹${formatNum(symbolDetails.market_cap)}`}/>
+                        <CryptoStat property={"Market Cap"} value={`₹${formatNum(symbolDetails.mcap_in_rupees)}`}/>
                         <CryptoStat property={"Market Cap Rank"} value={symbolDetails.market_cap_rank}/>
                 </div>
                 

@@ -1,0 +1,32 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cryptorupeetracker-dev-cde1d-authRole",
+      "UnauthRoleArn": "arn:aws:iam::174495933663:role/amplify-cryptorupeetracker-dev-cde1d-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::174495933663:role/amplify-cryptorupeetracker-dev-cde1d-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-cryptorupeetracker-dev-cde1d-deployment",
+      "UnauthRoleName": "amplify-cryptorupeetracker-dev-cde1d-unauthRole",
+      "StackName": "amplify-cryptorupeetracker-dev-cde1d",
+      "StackId": "arn:aws:cloudformation:ap-south-1:174495933663:stack/amplify-cryptorupeetracker-dev-cde1d/f09a7860-14eb-11ef-829e-0aba7fb8250b",
+      "AmplifyAppId": "d38c2hefh0hpj3"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d38c2hefh0hpj3",
+          "type": "manual"
+        }
+      },
+      "function": {
+        "getcryptoprice": {
+          "deploymentBucketName": "amplify-cryptorupeetracker-dev-cde1d-deployment",
+          "s3Key": "amplify-builds/getcryptoprice-31702f69327038355447-build.zip"
+        }
+      },
+      "api": {
+        "api63085d4a": {}
+      }
+    }
+  }
+}

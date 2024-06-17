@@ -21,7 +21,7 @@ const Home = () => {
     const firstCoinIdx = lastCoinIdx - COINS_PER_PAGE;
     const coinsOnPage = cryptoData?.slice(firstCoinIdx, lastCoinIdx);
 
-    return <div className="main-div md:h-[calc(100vh-3rem)] min-h-[calc(100vh-8vh)]">
+    return <div className="main-div">
                 <div className="table-div">
                     <table className="tbl">
                         <TableHeader/>

@@ -9,15 +9,16 @@ import Footer from './components/Footer';
 import CryptoDataContext from './utils/CryptoDataContext';
 import { useEffect, useState } from 'react';
 import { CryptoData } from './utils/constants';
-import res from './data.json'
-// import axios, { AxiosResponse } from 'axios';
-// import { API_ID, API_KEY } from "./constants/api_details";
+
+import axios, { AxiosResponse } from 'axios';
+import { API_ID, API_KEY } from './utils/api_details';
+
 
 const App = () => {
 
-      // const headers = {
-    //     'x-api-key': API_KEY
-    // }
+      const headers = {
+        'x-api-key': API_KEY
+    }
 
     const [cryptoData, setCryptoData] = useState<CryptoData[]>()
     const [loading, setLoading] = useState(true)
@@ -26,16 +27,12 @@ const App = () => {
     const getCryptoData = async () => {
         try {
 
-            // const res : AxiosResponse = await axios.get(`https://${API_ID}.execute-api.ap-south-1.amazonaws.com/dev/get-crypto-price`, {headers: headers});
+            const res : AxiosResponse = await axios.get(`https://${API_ID}.execute-api.ap-south-1.amazonaws.com/dev/get-crypto-price`, {headers: headers});
 
             console.log(res)
-
-
-
-            setTimeout(() => {
-                setCryptoData(res)
-                setLoading(false)
-              }, 6000);
+            setCryptoData(res.data)
+            setLoading(false)
+            
 
          }catch (error) {
         
