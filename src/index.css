@@ -59,7 +59,7 @@
     }
 
     .tbl-row{
-        @apply hover:shadow-md  transition-shadow duration-300 cursor-pointer;
+        @apply hover:shadow-md transition-shadow italic md:not-italic duration-300 cursor-pointer ease-out;
     }
 
     .pagination-cont{
