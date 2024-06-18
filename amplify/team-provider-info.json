@@ -20,6 +20,12 @@
       },
       "api": {
         "apif58297b2": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "dhccwisbatvcp",
+          "type": "manual"
+        }
       }
     }
   }
