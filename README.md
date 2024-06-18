@@ -1,8 +1,8 @@
 # Crypto Rupee Tracker
 
-This fully responsive full-stack web app is developed using TypeScript-based AWS Lambda Functions, TypeScript-based React.JS, and Tailwind CSS. It displays the prices of the top 100 cryptocurrencies in Indian Rupees (INR/₹) and is deployed using AWS Amplify.
+A fully responsive full-stack web app developed using TypeScript-based AWS Lambda Function, TypeScript-based React.JS, and Tailwind CSS. It displays the prices of the top 100 cryptocurrencies in Indian Rupees (INR/₹) and is deployed using AWS Amplify.
 
-It also displays on circulating supply, all-time high changes, all-time high dates, market cap, and market cap rank.
+It also displays other details regarding a cryptocurrency like circulating supply, all-time high, all-time high change, all-time high date, market cap, and market cap rank.
 
 ## Main page of website
 
