@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 import { CryptoNameProps,  TableRowProps } from "../utils/constants";
 import { formatNum, roundDown } from "../utils/utils";
 import CryptoSvgIcon from "./CryptoSvgIcon";
+import { LiaExternalLinkAltSolid } from "react-icons/lia";
 
 const TableRow:FC<TableRowProps> = ({symbol, image, name, price, percentChange}) => {
 
@@ -18,6 +19,7 @@ const TableRow:FC<TableRowProps> = ({symbol, image, name, price, percentChange})
                 </td> 
                 <td className="tbl-body-elem">₹{price < 0 ? price : formatNum(price)}</td>
                 <td className={`tbl-body-elem ${percentChange >= 0 ? 'text-green-500' : 'text-red-500'}`}>{roundDown(percentChange)}%</td>
+                <td className=""><LiaExternalLinkAltSolid color="black" className="md:text-[2rem] text-[1.625rem]" /></td>
             </tr>  
 
 }
