@@ -11,15 +11,19 @@ const TableRow:FC<TableRowProps> = ({symbol, image, name, price, percentChange})
     const navigate = useNavigate();
 
     return <tr className="tbl-row hover:shadow-gray-1/50 hover:shadow-gray-300/100" onClick={()=> { navigate(`/crypto/${symbol}`)}}>
-                <td className="symbol-col">
+                <td className="absolute">
                     <div className="symbol-cont">
                         <div><CryptoSvgIcon symbol={`${symbol}`} image={image} size='M' /></div>
                         <CryptoName name={name}/>
                     </div>
                 </td> 
-                <td className="tbl-body-elem">₹{price < 0 ? price : formatNum(price)}</td>
-                <td className={`tbl-body-elem ${percentChange >= 0 ? 'text-green-500' : 'text-red-500'}`}>{roundDown(percentChange)}%</td>
-                <td className=""><LiaExternalLinkAltSolid color="black" className="md:text-[2rem] text-[1.625rem]" /></td>
+                <td className="py-[0.75rem]  sm:tracking-tighter md:text-xl">₹{price < 0 ? price : formatNum(price)}</td>
+                <td className="absolute">
+                    <div className="percent-cont">
+                        <div className={`md:w-16 w-14 text-center md:text-xl ${percentChange >= 0 ? 'text-green-500' : 'text-red-500'}`}>{roundDown(percentChange)}%</div>
+                        <div className={`md:text-3xl text-2xl text-black`}><LiaExternalLinkAltSolid/></div>
+                    </div>
+                </td> 
             </tr>  
 
 }

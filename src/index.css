@@ -27,15 +27,19 @@
     }
 
     .tbl-head-elem{
-        @apply  md:pb-[0.5rem] md:pt-[0.35rem] font-mono md:px-[5rem] px-3 md:tracking-wider uppercase text-[1.196rem] md:text-2xl;
+        @apply   md:pb-[0.5rem] md:pt-[0.35rem] font-mono text-center md:px-[5rem] px-3 md:tracking-wider uppercase text-[1.196rem] md:text-2xl;
     }
 
     .symbol-col{
-        @apply  absolute;
+        @apply absolute;
     }
 
     .symbol-cont{
         @apply flex items-center justify-start;
+    }
+
+    .percent-cont{
+        @apply grid grid-cols-2 items-center justify-center md:gap-12 gap-4 md:ml-[2.40rem] ml-[1.95rem];
     }
 
     .crypto-name{
@@ -43,7 +47,7 @@
     }
 
     .crypto-icon{
-        @apply h-6 md:ml-[3.25rem] ml-[0.225rem] md:mt-[0.25rem] mt-[0.65rem] md:h-10;
+        @apply h-6 md:ml-[2.35rem] ml-[0.225rem] md:mt-[0.25rem] mt-[0.65rem] md:h-10;
     }
 
     .crypto-icon-lg{
