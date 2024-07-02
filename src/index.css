@@ -39,7 +39,7 @@
     }
 
     .percent-cont{
-        @apply grid grid-cols-2 items-center justify-center md:gap-12 gap-4 md:ml-[2.40rem] ml-[1.95rem];
+        @apply grid grid-cols-2 items-center align-middle justify-center md:gap-12 gap-8 md:ml-[2.40rem] ml-[1.70rem];
     }
 
     .crypto-name{
