@@ -21,7 +21,7 @@ const TableRow:FC<TableRowProps> = ({symbol, image, name, price, percentChange})
                 <td className="absolute">
                     <div className="percent-cont">
                         <div className={`md:w-16 w-14 py-[0.65rem] text-center md:text-xl ${percentChange >= 0 ? 'text-green-500' : 'text-red-500'}`}>{roundDown(percentChange)}%</div>
-                        <div className={`md:text-3xl text-2xl text-black`}><LiaExternalLinkAltSolid/></div>
+                        <div className={`md:text-3xl text-2xl text-gray-900`}><LiaExternalLinkAltSolid/></div>
                     </div>
                 </td> 
             </tr>  
