@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { CryptoNameProps,  TableRowProps } from "../utils/constants";
-import { formatNum, roundDown } from "../utils/utils";
+import { formatNum, roundDown, roundDownPercent } from "../utils/utils";
 import CryptoSvgIcon from "./CryptoSvgIcon";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
 
@@ -20,7 +20,7 @@ const TableRow:FC<TableRowProps> = ({symbol, image, name, price, percentChange})
                 <td className="py-[0.75rem]  sm:tracking-tighter md:text-xl">₹{price < 0 ? price : formatNum(price)}</td>
                 <td className="absolute">
                     <div className="percent-cont">
-                        <div className={`md:w-16 w-14 py-[0.65rem] text-center md:text-xl ${percentChange >= 0 ? 'text-green-500' : 'text-red-500'}`}>{roundDown(percentChange)}%</div>
+                        <div className={`md:w-[4.5rem] w-16 py-[0.65rem] text-center md:text-xl ${percentChange >= 0 ? 'text-green-500' : 'text-red-500'}`}>{roundDownPercent(percentChange)}%</div>
                         <div className={`md:text-3xl text-2xl text-gray-900`}><LiaExternalLinkAltSolid/></div>
                     </div>
                 </td> 

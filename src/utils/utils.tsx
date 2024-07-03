@@ -1,6 +1,10 @@
 import numeral from 'numeral'
 
 export const roundDown = (num : number) =>{
+    return num < 1 ? numeral(num).format('0,0.00000') : numeral(num).format('0,0.00');
+}
+
+export const roundDownPercent = (num : number) =>{
     return numeral(num).format('0,0.00');
 }
 
@@ -21,6 +25,7 @@ export const formatNum = (num : string | number) => {
         const x = n/100000;
         return roundDown(x) + " Lakhs"
     }
+
 
     return roundDown(n)
 
