@@ -8,7 +8,7 @@ It also displays other details regarding a cryptocurrency like circulating suppl
 
 ## Main page of website
 
-![main page of webiste](img/main-page.JPG)
+![main page of webiste](img/main-page-2.JPG)
 
 ## Crypto Details page
 
