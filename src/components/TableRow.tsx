@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { CryptoNameProps,  TableRowProps } from "../utils/constants";
-import { formatNum, roundDown, roundDownPercent } from "../utils/utils";
+import { formatNum, roundDownPercent } from "../utils/utils";
 import CryptoSvgIcon from "./CryptoSvgIcon";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
 
